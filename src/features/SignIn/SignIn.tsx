@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import Button from 'src/components/base/Button';
-import routePath from 'src/constants/routePath';
-import { signInPost } from 'src/features/SignIn/services';
+import {toast} from "react-toastify";
+import Button from "../../components/base/Button";
+import routhPath from "../../constant/routhPath";
+import {signInPost} from "./services";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -29,8 +29,9 @@ const SignIn: React.FC<Props> = (props) => {
   const signIn = async () => {
     if (userName && password) {
       try {
-        await dispatch(signInPost({ userName, password }));
-        navigate(routePath.LANDING);
+        // @ts-ignore
+        await dispatch(signInPost({userName, password}));
+        navigate(routhPath.HOME);
       } catch (e: any) {
         toast(e.message);
       }
@@ -74,7 +75,7 @@ const SignIn: React.FC<Props> = (props) => {
           <div
             className={'mt-5 text-[#777777] cursor-pointer hover:text-[#2563eb] hover:underline'}
             onClick={() => {
-              navigate(routePath.SIGN_UP);
+              navigate(routhPath.SIGN_UP);
             }}
           >
             Create new account

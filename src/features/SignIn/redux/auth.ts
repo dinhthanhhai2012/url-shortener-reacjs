@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// @ts-ignore
 import { signInPost } from 'src/features/SignIn/services';
+// @ts-ignore
 import { Role } from 'src/interfaces/role';
 
 export interface Auth {

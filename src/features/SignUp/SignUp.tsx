@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+// @ts-ignore
 import Button from 'src/components/base/Button';
-import routePath from 'src/constants/routePath';
-import { signUpPost } from 'src/features/SignIn/services';
-import { Role } from 'src/interfaces/role';
+import routhPath from "../../constant/routhPath";
+import {signUpPost} from "../SignIn/services"
+import {Role} from "../../interfaces/role";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -13,7 +14,7 @@ interface Props {}
 const SignUp: React.FC<Props> = (props) => {
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [role, setRole] = useState<Role>(Role.STUDENT);
+  const [role, setRole] = useState<Role>(Role.USERS);
 
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ const SignUp: React.FC<Props> = (props) => {
   const signUp = async () => {
     if (userName && password) {
       await signUpPost(userName, password, role);
-      navigate(routePath.SIGN_IN);
+      navigate(routhPath.SIGN_IN);
     } else {
       toast('missing userName or password');
     }
@@ -39,8 +40,6 @@ const SignUp: React.FC<Props> = (props) => {
     <>
       <div className={'flex flex-col items-center mt-10'}>
         <div className={'text-5xl font-bold uppercase tracking-widest'}>Sign Up</div>
-
-        {/*<div className={'mt-5 text-[#777777]'}>Enter your email to log into your account.</div>*/}
         <div className={'flex flex-col mt-12'}>
           <div>
             <div className={''}>User Name</div>
@@ -61,27 +60,29 @@ const SignUp: React.FC<Props> = (props) => {
 
           <div className={'flex justify-evenly mt-8'}>
             <Button
-              content={'Student'}
+              content={'USERS'}
               overWriteClassName={
-                role === Role.STUDENT
+                role === Role.USERS
                   ? ''
                   : 'text-[black] border border-[1px] border-[black] bg-[white] hover:text-white rounded-full hover:bg-[#4f46e5] px-6 -py-2'
               }
               size={'sm'}
               handleClick={() => {
-                setRole(Role.STUDENT);
+                setRole(Role.USERS);
               }}
+
+
             />
             <Button
-              content={'Teacher'}
+              content={'ADMIN'}
               overWriteClassName={
-                role === Role.TEACHER
+                role === Role.ADMIN
                   ? ''
                   : 'text-[black] border border-[1px] border-[black] bg-[white] hover:text-white rounded-full hover:bg-[#4f46e5] px-6 -py-2'
               }
               size={'sm'}
               handleClick={() => {
-                setRole(Role.TEACHER);
+                setRole(Role.ADMIN);
               }}
             />
           </div>

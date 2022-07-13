@@ -1,3 +1,4 @@
-import SignUp from 'src/features/SignUp/SignUp';
+// @ts-ignore
+import SignUp from '/src/features/SignUp/SignUp';
 
 export default SignUp;

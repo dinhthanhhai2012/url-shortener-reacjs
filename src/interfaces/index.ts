@@ -1,3 +1,4 @@
-import { Role } from 'src/interfaces/role';
+// @ts-ignore
+import { Role } from '/src/interfaces/role';
 
 export default { Role };

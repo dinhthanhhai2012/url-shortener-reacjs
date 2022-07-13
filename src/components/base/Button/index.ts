@@ -1,3 +1,4 @@
-import Button from 'src/components/base/Button/Button';
+// @ts-ignore
+import Button from '/src/components/base/Button/Button';
 
 export default Button;

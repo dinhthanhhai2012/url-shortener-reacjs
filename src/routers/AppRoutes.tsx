@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import routePath from 'src/constants/routePath';
-import { routers } from 'src/routes/routers';
-import { RootState } from 'src/store/store';
+import routhPath from "../constant/routhPath";
+import {routers} from "./routers";
+import {RootState} from "../store/store";
 
 const AppRoutes: React.FC = () => {
   const id = useSelector((state: RootState) => state.auth._id);
@@ -19,7 +19,7 @@ const AppRoutes: React.FC = () => {
       //@ts-ignore
       const route = routers[key];
       if (route.isPrivate && route.path === location.pathname && !isAuthenticated) {
-        navigator(routePath.SIGN_IN);
+        navigator(routhPath.SIGN_IN);
       }
     });
   }, [location]);
@@ -29,11 +29,11 @@ const AppRoutes: React.FC = () => {
   //   return <Navigate replace to={routePath.DASHBOARD} />;
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigator(routePath.LANDING);
-    } else {
-      navigator(routePath.SIGN_IN);
-    }
+    // if (isAuthenticated) {
+      navigator(routhPath.HOME);
+    // } else {
+    //   navigator(routhPath.SIGN_IN);
+    // };
   }, [id, userName, role]);
 
   return (

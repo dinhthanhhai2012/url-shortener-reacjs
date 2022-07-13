@@ -1,3 +1,4 @@
-import SignIn from 'src/features/SignIn/SignIn';
+// @ts-ignore
+import SignIn from "./SignIn";
 
 export default SignIn;

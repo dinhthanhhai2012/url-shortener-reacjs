@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// @ts-ignore
 import { Role } from 'src/interfaces/role';
+// @ts-ignore
 import axiosInstance from 'src/services/config';
 
 export const signInPost = createAsyncThunk('/user/sign-in', async (data: { userName: string; password: string }) => {
